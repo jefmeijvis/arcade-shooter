@@ -13,7 +13,12 @@ function preload ()
         "audio-off",
         "orb",
         "coin",
-        "bullet"
+        "bullet",
+        "effects-on",
+        "effects-off",
+        "play",
+        "pause",
+        "overlay-paused",
     ]
 
     let audio = ["chaoz-fantasy"];

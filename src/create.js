@@ -4,7 +4,7 @@ let speed = 50;
 
 
 // ui
-let musicButton;
+let musicButton;let effectsButton;let pauseButton;
 let backgroundUpper
 let backgroundLower
 let frame
@@ -18,7 +18,7 @@ let utilityTools;
 
 function create ()
 {
-    utilityTools = new UtilityTools();
+    utilityTools = new UtilityTools(this);
     utilityTools.create();
     // Configure keyboard input
     this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
@@ -61,6 +61,20 @@ function create ()
     musicButton.on('pointerover', () => {musicButton.setAlpha(0.50)} );
     musicButton.on('pointerout', () => {musicButton.setAlpha(1)} );
 
+    effectsButton = this.add.image(200-4-8-16,4+8,"effects-off");
+    effectsButton.setDepth(20);
+    effectsButton.setInteractive();
+    effectsButton.on('pointerdown', () => utilityTools.soundManager.toggleEffects() );
+    effectsButton.on('pointerover', () => {effectsButton.setAlpha(0.50)} );
+    effectsButton.on('pointerout', () => {effectsButton.setAlpha(1)} );
+
+    pauseButton = this.add.image(200-4-8-16-16,4+8,"play");
+    pauseButton.setDepth(20);
+    pauseButton.setInteractive();
+    pauseButton.on('pointerdown', () => utilityTools.pauseManager.togglePause() );
+    pauseButton.on('pointerover', () => {pauseButton.setAlpha(0.50)} );
+    pauseButton.on('pointerout', () => {pauseButton.setAlpha(1)} );
+
     entities = this.physics.add.group();
     coins = this.physics.add.group();
     playerGroup = this.physics.add.group();
@@ -74,6 +88,5 @@ function create ()
 
     emitterLeft.startFollow(objPlayer.object,-6,4);
     emitterRight.startFollow(objPlayer.object,6,4);
-
 
 }

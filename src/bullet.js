@@ -10,5 +10,14 @@ class Bullet
     update()
     {
         this.object.y -= 5;
+        if (this.object.y < 0)
+            this.destroy();
+    }
+
+    destroy()
+    {
+        var i = updateEntities.indexOf(this);
+        updateEntities.splice(i, 1);
+        this.object.destroy();
     }
 }

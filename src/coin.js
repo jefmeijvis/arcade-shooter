@@ -14,11 +14,15 @@ class Coin
     update()
     {
         this.object.y += 2;
+        if (this.object.y > 200)
+            this.destroy()
     }
 
     destroy()
     {
-        console.log("ded")
+            var i = updateEntities.indexOf(this);
+            updateEntities.splice(i, 1);
+            this.object.destroy();
     }
 
 }

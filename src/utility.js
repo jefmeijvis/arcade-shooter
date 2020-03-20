@@ -12,6 +12,7 @@ class SoundManager
         // Member variables
         this.currentSong = null;
         this.boolPlayAudio = false;
+        this.boolPlayEffects = false;
 
         // Music list
         this.backgroundChaozFantasy = game.sound.add("chaoz-fantasy")
@@ -25,6 +26,20 @@ class SoundManager
         this.currentSong = this.backgroundChaozFantasy;
         console.log("UtilityTools.SounManager created!")
     }
+
+    toggleEffects()
+    {
+        this.boolPlayEffects = !this.boolPlayEffects
+        if (this.boolPlayEffects)
+            {
+                effectsButton.setTexture("effects-on");
+            }
+        else
+            {
+                effectsButton.setTexture("effects-off");
+            }
+    }
+    
 
     toggleAudio()
     {
@@ -58,11 +73,17 @@ class BackgroundManager
 // PauseManager ===================================================================================
 class PauseManager
 {
-    constructor()
+    constructor(_this)
     {
+        // set this._this to _this
+        this._this = _this
+
+
+
         // Log constructor end
         console.log("UtilityTools.PauseManager created!")
         this.pause = false;
+        this.pauseOverlay;
     } 
 
     togglePause()
@@ -71,7 +92,11 @@ class PauseManager
         objPlayer.pause();
         if (this.pause)
         {
+            this.pauseOverlay = this._this.add.image(100,100,"overlay-paused");
+            this.pauseOverlay.setDepth(20);
+
             utilityTools.soundManager.effectPause.play();
+            pauseButton.setTexture("pause")
 
             if (utilityTools.soundManager.currentSong.isPlaying)
                 utilityTools.soundManager.currentSong.pause()
@@ -79,7 +104,9 @@ class PauseManager
         }
         else
         {
+            this.pauseOverlay.destroy()
             utilityTools.soundManager.effectPause.play();
+            pauseButton.setTexture("play")
 
             if (utilityTools.soundManager.currentSong.isPaused)
                 utilityTools.soundManager.currentSong.resume()
@@ -92,11 +119,11 @@ class PauseManager
 // Base class =====================================================================================
 class UtilityTools
 {
-    constructor()
+    constructor(_this)
     {
         this.soundManager = new SoundManager();
         this.backgroundManager = new BackgroundManager();
-        this.pauseManager = new PauseManager();
+        this.pauseManager = new PauseManager(_this);
     }
 
     update()
