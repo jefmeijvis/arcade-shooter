@@ -9,25 +9,20 @@
 <body>
 <div class="heading">
     <p>Working title | Jef Meijvis 19/03/2020</p>
-</div>
-
-    <!-- Level data -->
-    <script src="maps/base.js"></script>
-    
+</div>    
+    <!-- 3 main scripts used by the Phaser.js engine -->
+    <!-- Must be loaded in correct order and before the rest -->
     <script src="src/preload.js"></script>
     <script src="src/create.js"></script>
     <script src="src/update.js"></script>
+
+
+    <!-- Custom logic with regards to the gameplay -->
     <script src="src/main.js"></script>
     <script src="src/onload.js"></script>
     <script src="src/bullet.js"></script>
     <script src="src/ship.js"></script>
     <script src="src/coin.js"></script>
     <script src="src/utility.js"></script>
-
-
-
-
-
-
 </body>
 </html>
