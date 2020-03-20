@@ -1,0 +1,11 @@
+
+
+16/03/2020
+ - added mapeditor in java (processing) with base functionality,
+    able to select a tile from a 10x10 tilemap
+
+ 14/03/2020
+ - initial version
+ - WEBGL rendering
+ - player movement
+ - tilemap management using .js map files
