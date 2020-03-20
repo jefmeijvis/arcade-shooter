@@ -12,4 +12,4 @@ The game logic is writtin in javascript, and [Phaser.js V3](https://www.https://
 
 
 ## How to run?
-At the moment, you can easily self host the entire folder at a certain port on your localhost and visit that location. For convenience, 
+At the moment, you can easily self host the entire folder at a certain port on your localhost and visit that location. For convenience, a run.py script is included which wil host the game at localhost:1111
