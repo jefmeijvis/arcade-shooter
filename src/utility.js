@@ -13,17 +13,50 @@ class SoundManager
         this.currentSong = null;
         this.boolPlayAudio = false;
         this.boolPlayEffects = false;
+        this.name = "SoundManager: "
 
         // Music list
         this.backgroundChaozFantasy = game.sound.add("chaoz-fantasy")
 
         // Sound effects list
-        this.effectPause = game.sound.add("pause")
+        //this.dict["coin"] = game.sound.add("coin").setVolume(.5)
+        this.dict = {};
+    }
+
+    addSoundToDictionary(name)
+    {
+        let sound = game.sound.add(name);
+        this.dict[name] = sound;
+        return sound;
+    }
+
+    addSoundToDictionaryWithVolume(name,volume)
+    {
+        this.addSoundToDictionary(name).setVolume(volume)
+    }
+
+    playSoundEffect(name)
+    {
+        if (!this.boolPlayEffects)
+            return;
+
+        let sound = this.dict[name];
+        if (sound == null)
+        {
+            console.warn(this.name + "Unable to find sound " + name)
+        }
+        else
+        {
+            sound.play()
+        }
     }
 
     create()
     {
         this.currentSong = this.backgroundChaozFantasy;
+        this.addSoundToDictionaryWithVolume("coin",1);
+        this.addSoundToDictionary("pause");
+
         console.log("UtilityTools.SounManager created!")
     }
 
@@ -95,7 +128,7 @@ class PauseManager
             this.pauseOverlay = this._this.add.image(100,100,"overlay-paused");
             this.pauseOverlay.setDepth(20);
 
-            utilityTools.soundManager.effectPause.play();
+            utilityTools.soundManager.playSoundEffect("pause")
             pauseButton.setTexture("pause")
 
             if (utilityTools.soundManager.currentSong.isPlaying)
@@ -105,7 +138,7 @@ class PauseManager
         else
         {
             this.pauseOverlay.destroy()
-            utilityTools.soundManager.effectPause.play();
+            utilityTools.soundManager.playSoundEffect("pause")
             pauseButton.setTexture("play")
 
             if (utilityTools.soundManager.currentSong.isPaused)

@@ -20,15 +20,17 @@ class Coin
 
     destroy()
     {
-            var i = updateEntities.indexOf(this);
-            updateEntities.splice(i, 1);
-            this.object.destroy();
+        this.boolAlive = false;
+        var i = updateEntities.indexOf(this);
+        updateEntities.splice(i, 1);
+        this.object.destroy();
     }
 
 }
 
 function collectCoin(player , coin)
 {
+    utilityTools.soundManager.playSoundEffect("coin")
     objPlayer.addScore(1);
     coin.destroy()
 }

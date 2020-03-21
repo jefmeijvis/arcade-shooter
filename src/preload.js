@@ -37,6 +37,8 @@ function preload ()
     });
 
     this.load.audio("pause", "audio/pause" + ".ogg")
+    this.load.audio("coin", "audio/coin" + ".wav")
+
 
 
     console.log("Preload finished")
