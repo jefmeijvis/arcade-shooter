@@ -138,9 +138,11 @@ class PauseManager
             this.pauseOverlay.destroy()
             utilityTools.soundManager.playSoundEffect("pause")
             pauseButton.setTexture("play")
-
-            if (utilityTools.soundManager.currentSong.isPaused)
+            if (utilityTools.soundManager.currentSong.isPaused && utilityTools.soundManager.boolPlayAudio)
+            {
                 utilityTools.soundManager.currentSong.resume()
+
+            }
         }
     }
 }

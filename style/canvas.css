@@ -17,3 +17,10 @@
       color: white;
       text-align: center;
   }
+
+  @font-face {
+    font-family: font-arcade;
+    src: url('../fonts/font-arcade.ttf');
+    font-weight:400;
+    font-weight:normal;
+  }

@@ -1,6 +1,6 @@
 function preload ()
 {
-
+    // Image filename array. Expects .png fileformat only
     let images = [
         "debug-background",
         "sphere",
@@ -21,8 +21,23 @@ function preload ()
         "overlay-paused",
     ]
 
-    let audio = ["chaoz-fantasy"];
+    // Image filename array. Expects .mp3 fileformat only
+    let audioMp3 = [
+        "chaoz-fantasy"
+    ];
+    // Image filename array. Expects .oog fileformat only
+    let audioOgg = [
+        "pause"
+    ];
+    // Image filename array. Expects .wav fileformat only
+    let audioWav = [
+        "coin"
+    ];
 
+
+    //=======================
+    // File loading functions
+    //=======================
 
     // load all images
     this.load.image('red', 'http://labs.phaser.io/assets/particles/red.png');
@@ -31,15 +46,23 @@ function preload ()
         this.load.image(element, "img/" + element + ".png")
     });
 
-    audio.forEach(song => 
+    // Load all mp3 audiofiles
+    audioMp3.forEach(song => 
     {
         this.load.audio(song, "audio/" + song + ".mp3")
     });
 
-    this.load.audio("pause", "audio/pause" + ".ogg")
-    this.load.audio("coin", "audio/coin" + ".wav")
+    // Load all ogg audiofiles
+    audioOgg.forEach(song => 
+    {
+        this.load.audio(song, "audio/" + song + ".ogg")
+    });
 
-
+    // Load all wav audiofiles
+    audioWav.forEach(song => 
+    {
+        this.load.audio(song, "audio/" + song + ".wav")
+     });
 
     console.log("Preload finished")
 

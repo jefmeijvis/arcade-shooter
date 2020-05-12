@@ -32,5 +32,6 @@ function collectCoin(player , coin)
 {
     utilityTools.soundManager.playSoundEffect("coin")
     objPlayer.addScore(1);
+    scoreText.setText(objPlayer.score)
     coin.destroy()
 }

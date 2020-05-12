@@ -5,6 +5,7 @@ let speed = 50;
 
 // ui
 let musicButton;let effectsButton;let pauseButton;
+let scoreText;
 let backgroundUpper
 let backgroundLower
 let frame
@@ -74,6 +75,16 @@ function create ()
     pauseButton.on('pointerdown', () => utilityTools.pauseManager.togglePause() );
     pauseButton.on('pointerover', () => {pauseButton.setAlpha(0.50)} );
     pauseButton.on('pointerout', () => {pauseButton.setAlpha(1)} );
+
+    scoreIndicator = this.add.image(10,4+8,"coin");
+    scoreIndicator.setDepth(20);
+    scoreIndicator.setInteractive();
+    scoreIndicator.on('pointerover', () => {scoreIndicator.setAlpha(0.50)} );
+    scoreIndicator.on('pointerout', () => {scoreIndicator.setAlpha(1)} );
+    scoreText = this.add.text(17,9, '0x00',{fontFamily: 'font-arcade', fontSize: '8px',});
+    scoreText.setDepth(20)
+
+
 
     entities = this.physics.add.group();
     coins = this.physics.add.group();
