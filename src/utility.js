@@ -18,8 +18,6 @@ class SoundManager
         // Music list
         this.backgroundChaozFantasy = game.sound.add("chaoz-fantasy")
 
-        // Sound effects list
-        //this.dict["coin"] = game.sound.add("coin").setVolume(.5)
         this.dict = {};
     }
 
@@ -54,7 +52,7 @@ class SoundManager
     create()
     {
         this.currentSong = this.backgroundChaozFantasy;
-        this.addSoundToDictionaryWithVolume("coin",1);
+        this.addSoundToDictionaryWithVolume("coin",.5);
         this.addSoundToDictionary("pause");
 
         console.log("UtilityTools.SounManager created!")
