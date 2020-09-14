@@ -1,6 +1,6 @@
 // globals
 let objPlayer;
-let speed = 50;
+let speed = 100;
 
 
 // ui
@@ -80,6 +80,7 @@ function create ()
     scoreIndicator.setDepth(20);
     scoreIndicator.setInteractive();
     scoreIndicator.on('pointerover', () => {scoreIndicator.setAlpha(0.50)} );
+
     scoreIndicator.on('pointerout', () => {scoreIndicator.setAlpha(1)} );
     scoreText = this.add.text(17,9, '0x00',{fontFamily: 'font-arcade', fontSize: '8px',});
     scoreText.setDepth(20)
@@ -89,8 +90,15 @@ function create ()
     entities = this.physics.add.group();
     coins = this.physics.add.group();
     playerGroup = this.physics.add.group();
+    enemies = this.physics.add.group();
+    bullets = this.physics.add.group();
+
 
     this.physics.add.overlap(playerGroup, coins, collectCoin, null, this);
+    this.physics.add.overlap(playerGroup, enemies, collideEnemy, null, this);
+    this.physics.add.overlap(bullets, enemies, collideEnemyBullet, null, this);
+
+
 
 
 

@@ -1,12 +1,20 @@
 class Coin
 {
-
-    constructor()
+    constructor(x , y)
     {
-        let x = Math.random()*200;
-        x = Math.floor(x/8) * 8;
+        if (x === undefined)
+        {
+            console.log("Undefined!");
+            x = Math.random()*200;
+            x = Math.floor(x/8) * 8;
+        };
 
-        let y = objPlayer.time%8;
+        if (y === undefined)
+        {
+            y = objPlayer.time%8;
+        }
+
+        console.log(x + "-" + y);
         this.object = coins.create(x,y,"coin")
         updateEntities.push(this);
     }

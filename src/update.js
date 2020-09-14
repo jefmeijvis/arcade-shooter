@@ -7,7 +7,7 @@ function update()
         if (this.keyRight.isDown) {objPlayer.object.setVelocityX(+speed);}
         if (this.keyLeft.isDown)  {objPlayer.object.setVelocityX(-speed);}
 
-        if (this.keyShoot.isDown)  {objPlayer.shootBullet();new Coin();}
+        if (this.keyShoot.isDown)  {objPlayer.shootBullet();}
 
             // scrolling background
     backgroundUpper.y += 1;
@@ -16,6 +16,7 @@ function update()
     if (backgroundLower.y > 100){backgroundLower.y = -100}
 
     updateEntities.forEach(entity => { entity.update();});
+    utilityTools.spawnManager.update();
     }
 
     if (Phaser.Input.Keyboard.JustDown(this.keyPause)){utilityTools.pauseManager.togglePause()}

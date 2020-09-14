@@ -101,6 +101,26 @@ class BackgroundManager
     } 
 }
 
+
+// SpawnManager ==============================================================================
+class SpawnManager
+{
+    constructor(context)
+    {
+        this.context = context;
+        // Log constructor end
+        console.log("UtilityTools.SpawnManager created!")
+    } 
+
+    update()
+    {
+        if (Math.random()*100 < 2)
+        {
+            new Enemy();
+        }
+    }
+}
+
 // PauseManager ===================================================================================
 class PauseManager
 {
@@ -157,11 +177,13 @@ class UtilityTools
         this.soundManager = new SoundManager();
         this.backgroundManager = new BackgroundManager();
         this.pauseManager = new PauseManager(_this);
+        this.spawnManager = new SpawnManager(_this);
     }
 
     update()
     {
         // update all UtilityTools members that need updating
+        this.spawnManager.update();
 
     }
 

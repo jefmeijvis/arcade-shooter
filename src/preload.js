@@ -19,6 +19,7 @@ function preload ()
         "play",
         "pause",
         "overlay-paused",
+        "enemy"
     ]
 
     // Image filename array. Expects .mp3 fileformat only

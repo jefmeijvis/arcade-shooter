@@ -3,7 +3,7 @@ class Bullet
 
     constructor(x,y)
     {
-        this.object = entities.create(objPlayer.object.x,objPlayer.object.y,"bullet")
+        this.object = bullets.create(objPlayer.object.x,objPlayer.object.y,"bullet")
         updateEntities.push(this);
     }
 
